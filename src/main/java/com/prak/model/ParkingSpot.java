@@ -3,19 +3,23 @@ package com.prak.model;
 import com.prak.model.enums.Size;
 
 public class ParkingSpot {
-    private int spotNumber;
-    private Size size;
+    private final int spotNumber;
+    private final Size size;
     private Vehicle vehicle;
-    private ParkingLevel parkingLevel;
+    private final ParkingLevel parkingLevel;
+    private final int rowNumber;
+    private final int levelNumber;
 
     public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public ParkingSpot(int spotNumber, Size size, ParkingLevel parkingLevel) {
+    public ParkingSpot(int spotNumber, Size size, ParkingLevel parkingLevel, int rowNumber, int levelNumber) {
         this.spotNumber = spotNumber;
         this.size = size;
         this.parkingLevel = parkingLevel;
+        this.rowNumber = rowNumber;
+        this.levelNumber = levelNumber;
         this.vehicle = null;
     }
 
@@ -38,5 +42,21 @@ public class ParkingSpot {
 
     public void makeSpotAvailable() {
         vehicle = null;
+    }
+
+    public ParkingLevel getParkingLevel() {
+        return parkingLevel;
+    }
+
+    public int getSpotNumber() {
+        return spotNumber;
+    }
+
+    public int getRowNumber() {
+        return rowNumber;
+    }
+
+    public int getLevelNumber() {
+        return levelNumber;
     }
 }

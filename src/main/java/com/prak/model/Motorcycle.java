@@ -4,6 +4,8 @@ import com.prak.model.enums.Size;
 
 public class Motorcycle extends Vehicle{
 
+    public static final String VEHICLE_NAME = "motorcycle";
+
     public Motorcycle(String motorcycleRegistrationNumber) {
         super(motorcycleRegistrationNumber, Size.MOTORCYCLE, 1);
     }

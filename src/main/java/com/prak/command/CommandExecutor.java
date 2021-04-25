@@ -3,7 +3,6 @@ package com.prak.command;
 import com.prak.model.Command;
 import com.prak.service.ParkingLotService;
 
-import java.util.List;
 
 public abstract class CommandExecutor {
     ParkingLotService parkingLotService;

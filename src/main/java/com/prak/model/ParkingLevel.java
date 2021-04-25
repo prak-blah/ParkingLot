@@ -1,6 +1,7 @@
 package com.prak.model;
 
 import com.prak.exception.ParkingLotException;
+import com.prak.exception.VehicleAlreadyParkedException;
 import com.prak.model.enums.Size;
 import com.prak.util.ParkingSpotUtil;
 
@@ -27,21 +28,23 @@ public class ParkingLevel {
         //TODO can we use stream? May cause race condition?
         for (int row=0;row<this.numberOfRows;row++) {
             for (int spot=0;spot<parkingLotPhysicalDetails.getNumberOfMotorcycleSpotsPerRow();spot++) {
-                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.MOTORCYCLE, this));
+                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.MOTORCYCLE, this, row, levelNumber));
             }
             for (int spot=0;spot<parkingLotPhysicalDetails.getNumberOfCompactSpotsPerRow();spot++) {
-                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.COMPACT, this));
+                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.COMPACT, this, row, levelNumber));
             }
             for (int spot=0;spot<parkingLotPhysicalDetails.getNumberOfLargeSpotsPerRow();spot++) {
-                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.LARGE, this));
+                this.parkingSpots.add(new ParkingSpot(spotNumber++, Size.LARGE, this, row, levelNumber));
             }
         }
     }
 
     public boolean parkVehicle(Vehicle vehicle) throws ParkingLotException {
         validateParkingLevelInitialised();
-        int startingParkingSpotNumber = findNextAvailableSpot(vehicle);
+        if (isVehicleParkedWithRegistrationNumber(vehicle.vehicleRegistrationNumber))
+            throw new VehicleAlreadyParkedException();
 
+        int startingParkingSpotNumber = findNextAvailableSpot(vehicle);
         if(startingParkingSpotNumber==-1) {
             return false;
         }
@@ -108,6 +111,10 @@ public class ParkingLevel {
         if (parkingSpots == null) {
             throw new ParkingLotException("Parking Level Not Initialised Yet");
         }
+    }
+
+    public int getLevelNumber() {
+        return levelNumber;
     }
 
 }

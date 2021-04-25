@@ -10,11 +10,17 @@ import java.util.Map;
 public class CommandExecutorFactory {
     Map<String, CommandExecutor> commands = new HashMap<>();
 
-    CommandExecutorFactory(ParkingLotService parkingLotService) {
+    public CommandExecutorFactory(ParkingLotService parkingLotService) {
         //add commands here;
+        commands.put(CreateNewParkingLotCommandExecutor.COMMAND_NAME,
+                new CreateNewParkingLotCommandExecutor(parkingLotService));
+        commands.put(ParkVehicleCommandExecutor.COMMAND_NAME,
+                new CreateNewParkingLotCommandExecutor(parkingLotService));
+        commands.put(UnParkVehicleCommandExecutor.COMMAND_NAME,
+                new CreateNewParkingLotCommandExecutor(parkingLotService));
     }
 
-    public CommandExecutor getCommand (Command command) {
+    public CommandExecutor getCommandExecutor (Command command) {
         CommandExecutor commandExecutor = commands.get(command.getCommandName());
         if (commandExecutor == null)
             throw new InvalidCommandException();

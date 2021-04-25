@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateNewParkingLotCommandExecutor extends CommandExecutor {
-    ParkingLotService parkingLotService;
+    public static final String COMMAND_NAME = "create_parking_lot";
 
     public CreateNewParkingLotCommandExecutor(ParkingLotService parkingLotService) {
         super(parkingLotService);

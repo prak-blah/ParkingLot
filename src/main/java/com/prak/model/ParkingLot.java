@@ -40,7 +40,6 @@ public class ParkingLot {
             }
         }
         throw new InvalidRegistrationNumberException();
-
     }
 
     public List<ParkingLevel> getParkingLevels() {
