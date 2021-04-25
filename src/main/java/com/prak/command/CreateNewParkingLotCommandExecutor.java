@@ -24,7 +24,8 @@ public class CreateNewParkingLotCommandExecutor extends CommandExecutor {
         if (parameters.size()!=6)
             return false;
         for (String parameter: parameters) {
-            if(!IntegerUtil.isInteger(parameter) && Integer.parseInt(parameter)>0) {
+            System.out.println(parameter + " " + Integer.parseInt(parameter));
+            if(!IntegerUtil.isInteger(parameter) || Integer.parseInt(parameter)>0) {
                 return false;
             }
         }
