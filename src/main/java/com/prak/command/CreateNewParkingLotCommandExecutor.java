@@ -41,5 +41,6 @@ public class CreateNewParkingLotCommandExecutor extends CommandExecutor {
         parkingLotService.CreateParkingLot(new ParkingLotPhysicalDetails(
                 intParams.get(0),intParams.get(1),intParams.get(2),intParams.get(3),intParams.get(4),intParams.get(5)
         ));
+        System.out.println("Successfully Created A Parking Lot");
     }
 }

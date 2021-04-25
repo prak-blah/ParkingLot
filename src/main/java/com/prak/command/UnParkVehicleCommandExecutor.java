@@ -25,6 +25,7 @@ public class UnParkVehicleCommandExecutor extends CommandExecutor{
         List<String> parameters = command.getParameters();
         try {
             parkingLotService.unParkVehicle(parameters.get(0));
+            System.out.println("Successfully Un Parked the car");
         } catch (ParkingLotException e) {
             System.out.println("Encountered exception while un_parking the car with error: " + e);
         }

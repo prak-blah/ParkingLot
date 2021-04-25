@@ -10,8 +10,8 @@ public class VehicleFactory {
 
     public VehicleFactory(String vehicleRegistrationNumber) {
         vehicle.put(Car.VEHICLE_NAME, new Car(vehicleRegistrationNumber));
-        vehicle.put(Bus.VEHICLE_NAME, new Car(vehicleRegistrationNumber));
-        vehicle.put(Motorcycle.VEHICLE_NAME, new Car(vehicleRegistrationNumber));
+        vehicle.put(Bus.VEHICLE_NAME, new Bus(vehicleRegistrationNumber));
+        vehicle.put(Motorcycle.VEHICLE_NAME, new Motorcycle(vehicleRegistrationNumber));
     }
 
     public boolean isValidVehicleType(String vehicleType) {

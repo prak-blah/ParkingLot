@@ -15,9 +15,11 @@ public class CommandExecutorFactory {
         commands.put(CreateNewParkingLotCommandExecutor.COMMAND_NAME,
                 new CreateNewParkingLotCommandExecutor(parkingLotService));
         commands.put(ParkVehicleCommandExecutor.COMMAND_NAME,
-                new CreateNewParkingLotCommandExecutor(parkingLotService));
+                new ParkVehicleCommandExecutor(parkingLotService));
         commands.put(UnParkVehicleCommandExecutor.COMMAND_NAME,
-                new CreateNewParkingLotCommandExecutor(parkingLotService));
+                new UnParkVehicleCommandExecutor(parkingLotService));
+        commands.put(ExitCommandExecutor.COMMAND_NAME,
+                new ExitCommandExecutor(parkingLotService));
     }
 
     public CommandExecutor getCommandExecutor (Command command) {
