@@ -5,53 +5,38 @@ import com.prak.model.enums.Size;
 public class ParkingSpot {
     private int spotNumber;
     private Size size;
-    private boolean isAvailable;
     private Vehicle vehicle;
-    //TODO see if this is the correct way.
     private ParkingLevel parkingLevel;
-
-    public int getSpotNumber() {
-        return spotNumber;
-    }
-
-    public void setSpotNumber(int spotNumber) {
-        this.spotNumber = spotNumber;
-    }
-
-    public Size getSize() {
-        return size;
-    }
-
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 
     public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public ParkingLevel getParkingLevel() {
-        return parkingLevel;
-    }
-
-    public void setParkingLevel(ParkingLevel parkingLevel) {
+    public ParkingSpot(int spotNumber, Size size, ParkingLevel parkingLevel) {
+        this.spotNumber = spotNumber;
+        this.size = size;
         this.parkingLevel = parkingLevel;
+        this.vehicle = null;
     }
 
-    public void makeParkingSpotUnavailable() {
-        this.setAvailable(false);
-        this.setVehicle(null);
+    public boolean canUseSpot(Vehicle vehicle) {
+        return isAvailable() && vehicle.canVehicleUseSpotSize(this.size);
+    }
+
+    public void parkVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+        vehicle.parkVehicle(this);
+    }
+
+    public void unParkVehicle() {
+        makeSpotAvailable();
+    }
+
+    public boolean isAvailable() {
+        return vehicle == null;
+    }
+
+    public void makeSpotAvailable() {
+        vehicle = null;
     }
 }
