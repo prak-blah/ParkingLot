@@ -113,8 +113,4 @@ public class ParkingLevel {
         }
     }
 
-    public int getLevelNumber() {
-        return levelNumber;
-    }
-
 }
