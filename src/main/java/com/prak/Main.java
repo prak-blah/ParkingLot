@@ -22,15 +22,14 @@ public class Main {
         while (true) {
             final String input = reader.readLine();
             final Command command = new Command(input);
-            if (command.getCommandName().equals(ExitCommandExecutor.COMMAND_NAME)) {
-                break;
-            }
             try {
                 executeCommands(command, commandExecutorFactory);
             } catch (ParkingLotException e) {
                 System.out.println("Found exception while executing a command: " + e);
             }
-
+            if (command.getCommandName().equals(ExitCommandExecutor.COMMAND_NAME)) {
+                break;
+            }
         }
     }
 

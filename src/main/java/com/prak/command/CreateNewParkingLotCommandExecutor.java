@@ -28,7 +28,8 @@ public class CreateNewParkingLotCommandExecutor extends CommandExecutor {
                 return false;
             }
         }
-        return true;
+        return Integer.parseInt(parameters.get(3)) + Integer.parseInt(parameters.get(4)) + Integer.parseInt(parameters.get(5))
+                == Integer.parseInt(parameters.get(2));
     }
 
     @Override

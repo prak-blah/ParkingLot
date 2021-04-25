@@ -16,7 +16,7 @@ public class ParkingLevel {
     private final int numberOfRows;
     private final List<ParkingSpot> parkingSpots;
     private final int numberOfParkingSpotsPerRow;
-    private Map<String, List<ParkingSpot>> registrationIdToParkingSpot;
+    private final Map<String, List<ParkingSpot>> registrationIdToParkingSpot;
 
     public ParkingLevel(int levelNumber, ParkingLotPhysicalDetails parkingLotPhysicalDetails) {
         this.numberOfRows = parkingLotPhysicalDetails.getNumberOfRowsPerLevel();

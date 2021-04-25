@@ -42,14 +42,6 @@ public class ParkingLot {
         throw new InvalidRegistrationNumberException();
     }
 
-    public List<ParkingLevel> getParkingLevels() {
-        return parkingLevels;
-    }
-
-    public int getNumberOfLevels() {
-        return numberOfLevels;
-    }
-
     private void validateParkingLotInitialised() {
         if (parkingLevels == null) {
             throw new ParkingLotException("Parking Lot Not Initialised Yet");

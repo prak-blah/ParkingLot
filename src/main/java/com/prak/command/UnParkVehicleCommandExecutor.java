@@ -7,7 +7,7 @@ import com.prak.service.ParkingLotService;
 import java.util.List;
 
 public class UnParkVehicleCommandExecutor extends CommandExecutor{
-    public static final String COMMAND_NAME = "un_park_vehicle";
+    public static final String COMMAND_NAME = "unpark";
 
     public UnParkVehicleCommandExecutor(ParkingLotService parkingLotService) {
         super(parkingLotService);
